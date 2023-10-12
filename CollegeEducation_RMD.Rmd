@@ -1,0 +1,89 @@
+---
+title: "College Education"
+author: "Oscar Briones Ramirez"
+date: '2023-02-01'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd("/Users/oscar/Desktop/Winter2023/STAT469/CollegeEducation")
+
+library(tidyverse)
+library(GGally)
+library(car)
+library(MASS)
+library(lmtest)
+library(multcomp)
+
+salary <- read_csv("Salary.csv")
+```
+
+**1. Create exploratory plots and calculate summary statistics from the data. Comment on any potential relationships you see from these exploratory plots.**
+
+```{r scatterplot, echo = TRUE}
+#1. Scatterplot BirthWeight by Mage
+ggplot(data=salary, mapping=aes(x=GPA, y=Salary)) + geom_point()+geom_smooth(se=FALSE)
+
+ggplot(data=salary, mapping=aes(x=MajorCategory, y=Salary)) + geom_boxplot() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+ggplot(data=salary, mapping=aes(x=Gen, y=Salary)) + geom_boxplot() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggplot(data=salary, mapping=aes(x=GPA, y=Salary, color = Gen)) + geom_point()
+
+cor(salary$Salary, salary$GPA)
+
+```
+
+**2. Write down a linear regression model (in matrix and vector form) in terms of parameters. Explain the meaning of any parameters in your model. Explain how statistical inference for your model can be used to answer the effect of major choice and identify any gender discrimination.**
+
+```{r boxplot, echo = TRUE}
+
+
+```
+
+**3. Using first principles (i.e. DON’T use lm() but you can check your answer with lm() ), calculate and report the estimates in a table. Interpret the coefficient for 1 categorical explanatory variable and the coefficient for GPA. Also calculate the estimate of the residual variance (or standard deviation) and (you can use lm() to get ). **
+
+```{r scatter2, echo = TRUE}
+
+
+```
+
+**4. One common argument is that some disciplines have greater biases (in terms of lower salaries) towards women than others. To verify this, check for interactions between major and gender by (i) drawing side-by-side boxplots of salary for each major category and gender combination and (ii) running an appropriate hypothesis test (either t or F) to check for significance. Comment on potential gender discrimination from your boxplot. For your hypothesis test, state your hypotheses, report an appropriate test statistic, -value and give your conclusion.**
+
+```{r cor, echo = TRUE}
+
+```
+
+**5. The validity of the tests from #4 depend on the validity of the assumptions in your model (if your assumptions are violated then the - values are likely wrong). Create graphics and/or run appropriate hypothesis tests to check the L-I-N-E assumptions associated with your multiple linear regression model including any interactions you found in #4. State why each assumption does or does not hold for the salary data.**
+
+```{r pairs, echo = TRUE}
+
+```
+
+**6. Calculate 97% confidence intervals for the coefficients for GPA, Gender and one major category. Interpret each interval.**
+
+```{r lm, echo = TRUE}
+
+```
+
+**7. For the Computers and Mathematics major category, perform a general linear hypothesis test that women, on average, earn less salary than men (for the same GPA). State your hypotheses, -value and conclusion. If this test is significant, report and estimate a 95% confidence interval for how much more men earn than women in that major category.).**
+
+
+```{r Bhat, echo = TRUE}
+
+```
+
+
+**8. Using predict.lm() and your fitted model, predict your salary and report an associated 95% prediction interval. Interpret this interval in context. **
+
+```{r fitted, echo = TRUE}
+
+```
+
+**9. If we wish to use our model for prediction as we did in #8, we should verify how accurate our predictions are via cross-validation. Conduct a leave-one-out cross validation of the salary data. Report your average RPMSE along with the average prediction interval width. Comment on whether you think your predictions are accurate or not. **
+
+```{r res, echo = TRUE}
+
+```
